@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using Microsoft.Win32;
 
 namespace ThemeSwitcher
@@ -25,11 +26,16 @@ namespace ThemeSwitcher
 
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+
+
+        const int LightMode = 1;
+        const int DarkMode = 2;
         public Home()
         {
             InitializeComponent();
             this.TopMost = true;
-            MessageBox.Show(SystemInformation.Network+"");
+
 
         }
 
