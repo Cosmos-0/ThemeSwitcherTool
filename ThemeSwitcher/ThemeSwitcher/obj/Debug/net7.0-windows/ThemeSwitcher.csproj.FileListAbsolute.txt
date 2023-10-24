@@ -17,3 +17,22 @@ D:\projects visual studio\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\R
 D:\projects visual studio\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.csproj.AssemblyReference.cache
 D:\projects visual studio\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.Home.resources
 D:\projects visual studio\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.csproj.CopyComplete
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ThemeSwitcher.exe
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ThemeSwitcher.dll.config
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ThemeSwitcher.deps.json
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ThemeSwitcher.runtimeconfig.json
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ThemeSwitcher.dll
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ThemeSwitcher.pdb
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\bin\Debug\net7.0-windows\ReaLTaiizor.dll
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.csproj.AssemblyReference.cache
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.Home.resources
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.Properties.Resources.resources
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.csproj.GenerateResource.cache
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.csproj.CoreCompileInputs.cache
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.csproj.CopyComplete
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.dll
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\refint\ThemeSwitcher.dll
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.pdb
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.genruntimeconfig.cache
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ref\ThemeSwitcher.dll

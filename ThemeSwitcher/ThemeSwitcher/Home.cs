@@ -28,6 +28,8 @@ namespace ThemeSwitcher
         public Home()
         {
             InitializeComponent();
+            this.TopMost = true;
+            MessageBox.Show(SystemInformation.Network+"");
 
         }
 
@@ -86,6 +88,11 @@ namespace ThemeSwitcher
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
             }
+        }
+
+        private void hideIcon_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

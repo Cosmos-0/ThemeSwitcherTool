@@ -33,7 +33,9 @@
             themeSwitch = new ReaLTaiizor.Controls.HopeSwitch();
             notifyIcon = new System.Windows.Forms.NotifyIcon(components);
             pictureBox = new System.Windows.Forms.PictureBox();
+            hideIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hideIcon).BeginInit();
             SuspendLayout();
             // 
             // themeSwitch
@@ -43,7 +45,8 @@
             themeSwitch.BaseColor = System.Drawing.Color.White;
             themeSwitch.BaseOffColor = System.Drawing.Color.FromArgb(220, 223, 230);
             themeSwitch.BaseOnColor = System.Drawing.Color.FromArgb(64, 158, 255);
-            themeSwitch.Location = new System.Drawing.Point(11, 12);
+            themeSwitch.Location = new System.Drawing.Point(68, 51);
+            themeSwitch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             themeSwitch.Name = "themeSwitch";
             themeSwitch.Size = new System.Drawing.Size(40, 20);
             themeSwitch.TabIndex = 1;
@@ -63,25 +66,42 @@
             pictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             pictureBox.Image = (System.Drawing.Image)resources.GetObject("pictureBox.Image");
             pictureBox.InitialImage = null;
-            pictureBox.Location = new System.Drawing.Point(11, 1);
+            pictureBox.Location = new System.Drawing.Point(33, 13);
+            pictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBox.Name = "pictureBox";
-            pictureBox.Size = new System.Drawing.Size(15, 11);
+            pictureBox.Size = new System.Drawing.Size(50, 30);
             pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox.TabIndex = 2;
             pictureBox.TabStop = false;
             pictureBox.MouseDown += pictureBox_MouseDown;
             // 
+            // hideIcon
+            // 
+            hideIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            hideIcon.Image = (System.Drawing.Image)resources.GetObject("hideIcon.Image");
+            hideIcon.InitialImage = null;
+            hideIcon.Location = new System.Drawing.Point(94, 13);
+            hideIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            hideIcon.Name = "hideIcon";
+            hideIcon.Size = new System.Drawing.Size(38, 30);
+            hideIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            hideIcon.TabIndex = 3;
+            hideIcon.TabStop = false;
+            hideIcon.Click += hideIcon_Click;
+            // 
             // Home
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Green;
-            ClientSize = new System.Drawing.Size(63, 44);
+            ClientSize = new System.Drawing.Size(183, 113);
+            Controls.Add(hideIcon);
             Controls.Add(pictureBox);
             Controls.Add(themeSwitch);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size(1366, 728);
+            MaximumSize = new System.Drawing.Size(1561, 971);
             MinimizeBox = false;
             Name = "Home";
             ShowInTaskbar = false;
@@ -91,6 +111,7 @@
             Load += Home_Load;
             Resize += Home_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hideIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -98,6 +119,7 @@
         private ReaLTaiizor.Controls.HopeSwitch themeSwitch;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.PictureBox hideIcon;
 
         #endregion
         //private ReaLTaiizor.Controls.ParrotFormHandle parrotFormHandle1;
