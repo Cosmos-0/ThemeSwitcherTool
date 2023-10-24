@@ -17,8 +17,8 @@ The Windows Dark & Light Mode Switcher is a simple tool that allows users to eas
 
 Before using the Windows Dark & Light Mode Switcher, make sure you have the following prerequisites installed:
 
-- Windows 7 or later.
-- .NET Framework (Minimum version: 4.6.1)
+- Windows 10.
+- .NET Framework (Minimum version: 7)
 
 ## Installation
 
