@@ -1,0 +1,80 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj": {}
+  },
+  "projects": {
+    "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
+        "projectName": "ThemeSwitcher",
+        "projectPath": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
+        "packagesPath": "C:\\Users\\OwuSsama\\.nuget\\packages\\",
+        "outputPath": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\OwuSsama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "ReaLTaiizor": {
+              "target": "Package",
+              "version": "[3.7.9.6, )"
+            },
+            "System.Data.DataSetExtensions": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
