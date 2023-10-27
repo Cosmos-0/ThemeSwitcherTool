@@ -16,11 +16,18 @@ namespace ThemeSwitcher
 {
     public partial class Home : Form
     {
-
         int SystemRes;
         RegistryKey key;
+        public const int WM_HOTKEY = 0x0312;
+        public const int HOTKEY_ID = 9000;  // Arbitrary unique ID to identify the hotkey
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
+
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         [DllImport("User32.dll")]
         public static extern bool ReleaseCapture();
@@ -28,14 +35,11 @@ namespace ThemeSwitcher
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam,  int lParam);
 
-
-
-        const int LightMode = 1;
-        const int DarkMode = 2;
         public Home()
         {
             InitializeComponent();
             this.TopMost = true;
+<<<<<<< HEAD
             try
             {
                 string appName = "ThemeSwitcher";
@@ -54,6 +58,9 @@ namespace ThemeSwitcher
             {
                 MessageBox.Show(ex.Message);
             }
+=======
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
+>>>>>>> 14da5c76a0f6d6a934023f675ff1a503f5114005
         }
 
         
@@ -64,16 +71,35 @@ namespace ThemeSwitcher
             key = Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true);
             SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
             themeSwitch.Checked = SystemRes.Equals(0);
-
-
+            RegisterHotKey(this.Handle, HOTKEY_ID, 0, (uint)Keys.F9);  // Register F9 as global hotkey
         }
 
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKey(this.Handle, HOTKEY_ID);  // Unregister the global hotkey when the form is closing
+        }
+
+        private void ToggleTheme()
+        {
+            //MessageBox.Show("Test");
+            themeSwitch.Checked = !themeSwitch.Checked;
+            //themeSwitch_CheckedChanged(null, null);  // Trigger the CheckedChanged event
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == HOTKEY_ID)
+            {
+                ToggleTheme();
+            }
+        }
         private void themeSwitch_CheckedChanged(object sender, EventArgs e)
         {
             Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", SystemRes.Equals(0) ? 1 : 0);
             Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", SystemRes.Equals(0) ? 1 : 0);
             SystemRes = SystemRes.Equals(0) ? 1 : 0;
-
         }
 
         private void Home_Resize(object sender, EventArgs e)

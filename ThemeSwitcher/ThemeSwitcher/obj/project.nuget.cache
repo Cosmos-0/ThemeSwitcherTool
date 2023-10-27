@@ -1,12 +1,16 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "B4EiWQPVihfBUtG45tRAADRlMNyDnS1L0ZUBqTejXex9WZDR/wH9kZija+zOoD5ALOXdpkben6skaeK1Z2pf0Q==",
+=======
+  "dgSpecHash": "D0L+uPo2LR/ZYDXX+yqB0s1xHpUJi0Er5rEwCzWo0ldWCECWt4o8QL8VTEhCA05I8FdFeKISVkH+RmLSTi4Y3w==",
+>>>>>>> 14da5c76a0f6d6a934023f675ff1a503f5114005
   "success": true,
-  "projectFilePath": "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
+  "projectFilePath": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\ThinkPad\\.nuget\\packages\\realtaiizor\\3.7.9.6\\realtaiizor.3.7.9.6.nupkg.sha512",
-    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
+    "C:\\Users\\OwuSsama\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\OwuSsama\\.nuget\\packages\\realtaiizor\\3.7.9.6\\realtaiizor.3.7.9.6.nupkg.sha512",
+    "C:\\Users\\OwuSsama\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

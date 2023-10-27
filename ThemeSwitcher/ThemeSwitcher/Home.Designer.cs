@@ -45,12 +45,11 @@
             themeSwitch.BaseColor = System.Drawing.Color.White;
             themeSwitch.BaseOffColor = System.Drawing.Color.FromArgb(220, 223, 230);
             themeSwitch.BaseOnColor = System.Drawing.Color.FromArgb(64, 158, 255);
-            themeSwitch.Location = new System.Drawing.Point(68, 51);
-            themeSwitch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            themeSwitch.Location = new System.Drawing.Point(60, 38);
             themeSwitch.Name = "themeSwitch";
             themeSwitch.Size = new System.Drawing.Size(40, 20);
             themeSwitch.TabIndex = 1;
-            themeSwitch.Text = "ThemeSwitcher";
+            themeSwitch.Text = "&ThemeSwitcher";
             themeSwitch.UseVisualStyleBackColor = true;
             themeSwitch.CheckedChanged += themeSwitch_CheckedChanged;
             // 
@@ -66,10 +65,9 @@
             pictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             pictureBox.Image = (System.Drawing.Image)resources.GetObject("pictureBox.Image");
             pictureBox.InitialImage = null;
-            pictureBox.Location = new System.Drawing.Point(33, 13);
-            pictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            pictureBox.Location = new System.Drawing.Point(29, 10);
             pictureBox.Name = "pictureBox";
-            pictureBox.Size = new System.Drawing.Size(50, 30);
+            pictureBox.Size = new System.Drawing.Size(44, 22);
             pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox.TabIndex = 2;
             pictureBox.TabStop = false;
@@ -80,10 +78,9 @@
             hideIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
             hideIcon.Image = (System.Drawing.Image)resources.GetObject("hideIcon.Image");
             hideIcon.InitialImage = null;
-            hideIcon.Location = new System.Drawing.Point(94, 13);
-            hideIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            hideIcon.Location = new System.Drawing.Point(82, 10);
             hideIcon.Name = "hideIcon";
-            hideIcon.Size = new System.Drawing.Size(38, 30);
+            hideIcon.Size = new System.Drawing.Size(33, 22);
             hideIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             hideIcon.TabIndex = 3;
             hideIcon.TabStop = false;
@@ -91,17 +88,16 @@
             // 
             // Home
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.Green;
-            ClientSize = new System.Drawing.Size(183, 113);
+            ClientSize = new System.Drawing.Size(160, 85);
             Controls.Add(hideIcon);
             Controls.Add(pictureBox);
             Controls.Add(themeSwitch);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size(1561, 971);
+            MaximumSize = new System.Drawing.Size(1366, 728);
             MinimizeBox = false;
             Name = "Home";
             ShowInTaskbar = false;

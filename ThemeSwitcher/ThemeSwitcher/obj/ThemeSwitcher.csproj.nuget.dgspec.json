@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj": {}
+    "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj": {
+    "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
+        "projectUniqueName": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
         "projectName": "ThemeSwitcher",
-        "projectPath": "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
-        "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\obj\\",
+        "projectPath": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
+        "packagesPath": "C:\\Users\\OwuSsama\\.nuget\\packages\\",
+        "outputPath": "D:\\projects visual studio\\ThemeSwitcher\\ThemeSwitcher\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ThinkPad\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\OwuSsama\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,7 +72,11 @@
               "privateAssets": "none"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> 14da5c76a0f6d6a934023f675ff1a503f5114005
         }
       }
     }
