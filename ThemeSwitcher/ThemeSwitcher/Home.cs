@@ -39,7 +39,7 @@ namespace ThemeSwitcher
         {
             InitializeComponent();
             this.TopMost = true;
-<<<<<<< HEAD
+
             try
             {
                 string appName = "ThemeSwitcher";
@@ -58,9 +58,9 @@ namespace ThemeSwitcher
             {
                 MessageBox.Show(ex.Message);
             }
-=======
+
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
->>>>>>> 14da5c76a0f6d6a934023f675ff1a503f5114005
+
         }
 
         
