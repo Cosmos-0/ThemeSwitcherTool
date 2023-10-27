@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -25,7 +26,7 @@ namespace ThemeSwitcher
         public static extern bool ReleaseCapture();
 
         [DllImport("User32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam,  int lParam);
 
 
 
@@ -35,9 +36,27 @@ namespace ThemeSwitcher
         {
             InitializeComponent();
             this.TopMost = true;
+            try
+            {
+                string appName = "ThemeSwitcher";
+                string appPath = Application.ExecutablePath;
 
+                RegistryKey startupKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
+                if (startupKey.GetValue(appName) == null) // Check if the app is already added to startup
+                {
+                    startupKey.SetValue(appName, appPath); // Add the app to startup
+                }
+
+                startupKey.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+        
 
         private void Home_Load(object sender, EventArgs e)
         {
