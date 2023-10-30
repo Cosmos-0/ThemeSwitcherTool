@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "7b5q1UPV+7HA0c+TcqGcTYDwyPjwvn/oFDLHOJ+68kEHL/qq0JicdkX3I6SfTnnjBS/xB0Sp0kHijnjZSv/i2Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ThinkPad\\Desktop\\theme Switcher\\ThemeSwitcherTool\\ThemeSwitcher\\ThemeSwitcher\\ThemeSwitcher.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\realtaiizor\\3.7.9.6\\realtaiizor.3.7.9.6.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

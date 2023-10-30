@@ -33,7 +33,7 @@ namespace ThemeSwitcher
         public static extern bool ReleaseCapture();
 
         [DllImport("User32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam,  int lParam);
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         public Home()
         {
@@ -63,7 +63,7 @@ namespace ThemeSwitcher
 
         }
 
-        
+
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -72,6 +72,7 @@ namespace ThemeSwitcher
             SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
             themeSwitch.Checked = SystemRes.Equals(0);
             RegisterHotKey(this.Handle, HOTKEY_ID, 0, (uint)Keys.F9);  // Register F9 as global hotkey
+
         }
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
@@ -144,6 +145,11 @@ namespace ThemeSwitcher
         private void hideIcon_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void Home_Shown(object sender, EventArgs e)
+        {
+            Hide();
         }
     }
 }

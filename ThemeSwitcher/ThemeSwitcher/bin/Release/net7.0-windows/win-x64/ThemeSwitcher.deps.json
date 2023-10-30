@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0/win-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {},
+    ".NETCoreApp,Version=v7.0/win-x64": {
+      "ThemeSwitcher/1.0.0": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "ReaLTaiizor": "3.7.9.6",
+          "System.Data.DataSetExtensions": "4.5.0"
+        },
+        "runtime": {
+          "ThemeSwitcher.dll": {}
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {},
+      "ReaLTaiizor/3.7.9.6": {
+        "runtime": {
+          "lib/net7.0-windows7.0/ReaLTaiizor.dll": {
+            "assemblyVersion": "3.7.9.6",
+            "fileVersion": "3.7.9.6"
+          }
+        }
+      },
+      "System.Data.DataSetExtensions/4.5.0": {}
+    }
+  },
+  "libraries": {
+    "ThemeSwitcher/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "ReaLTaiizor/3.7.9.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-omA6AvgA+r7ZokR+imSeeCWcrQP+58+j17niFeR+D/FNugY0tCpakYb809KvGrGIb+pqtHqiBt8k2b7oVjz+oQ==",
+      "path": "realtaiizor/3.7.9.6",
+      "hashPath": "realtaiizor.3.7.9.6.nupkg.sha512"
+    },
+    "System.Data.DataSetExtensions/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-221clPs1445HkTBZPL+K9sDBdJRB8UN8rgjO3ztB0CQ26z//fmJXtlsr6whGatscsKGBrhJl5bwJuKSA8mwFOw==",
+      "path": "system.data.datasetextensions/4.5.0",
+      "hashPath": "system.data.datasetextensions.4.5.0.nupkg.sha512"
+    }
+  }
+}
