@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Microsoft.Win32;
@@ -22,6 +14,12 @@ namespace ThemeSwitcher
         public const int HOTKEY_ID = 9000;  // Arbitrary unique ID to identify the hotkey
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
+
+        const int WM_SETTINGCHANGE = 0x001A;
+        const int HWND_BROADCAST = 0xFFFF;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int Msg, IntPtr wParam, string lParam, uint fuFlags, uint uTimeout, IntPtr lpdwResult);
 
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -62,8 +60,17 @@ namespace ThemeSwitcher
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
 
         }
+        public static void ChangeThemeMode(bool darkMode)
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true))
+            {
+                if (key != null)
+                    key.SetValue("AppsUseLightTheme", darkMode ? 0 : 1);
+            }
 
-
+            // Notify all windows about the theme change
+            SendMessageTimeout((IntPtr)HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, "ImmersiveColorSet", 0, 1000, IntPtr.Zero);
+        }
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -82,9 +89,7 @@ namespace ThemeSwitcher
 
         private void ToggleTheme()
         {
-            //MessageBox.Show("Test");
             themeSwitch.Checked = !themeSwitch.Checked;
-            //themeSwitch_CheckedChanged(null, null);  // Trigger the CheckedChanged event
         }
 
         protected override void WndProc(ref Message m)
@@ -100,6 +105,7 @@ namespace ThemeSwitcher
         {
             Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", SystemRes.Equals(0) ? 1 : 0);
             Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", SystemRes.Equals(0) ? 1 : 0);
+            ChangeThemeMode(SystemRes.Equals(0));
             SystemRes = SystemRes.Equals(0) ? 1 : 0;
         }
 
@@ -111,9 +117,6 @@ namespace ThemeSwitcher
                 notifyIcon.Visible = true; // Show the system tray icon
             }
         }
-
-
-
         private void notifyIcon_MouseDoubleClick(object sender, EventArgs e)
         {
             Show();  // Show the form
@@ -151,5 +154,6 @@ namespace ThemeSwitcher
         {
             Hide();
         }
+
     }
 }
