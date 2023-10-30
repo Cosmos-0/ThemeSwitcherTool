@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Windows Dark & Light Mode Switcher is a simple tool that allows users to easily switch between dark mode and light mode on windows10 operating system. This tool provides a convenient way to toggle between these display modes without the need to navigate through the Windows settings.
+The Windows Dark & Light Mode Switcher is a simple tool that allows users to easily switch between dark mode and light mode on windows10 and later operating system. This tool provides a convenient way to toggle between these display modes without the need to navigate through the Windows settings.
 
 ## Features
 
@@ -17,7 +17,7 @@ The Windows Dark & Light Mode Switcher is a simple tool that allows users to eas
 
 Before using the Windows Dark & Light Mode Switcher, make sure you have the following prerequisites installed:
 
-- Windows 10.
+- Windows 10 & later .
 - .NET Framework (Minimum version: 7)
 
 ## Installation
