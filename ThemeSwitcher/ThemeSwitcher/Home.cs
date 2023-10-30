@@ -9,7 +9,6 @@ namespace ThemeSwitcher
     public partial class Home : Form
     {
         int SystemRes;
-        RegistryKey key;
         public const int WM_HOTKEY = 0x0312;
         public const int HOTKEY_ID = 9000;  // Arbitrary unique ID to identify the hotkey
         public const int WM_NCLBUTTONDOWN = 0xA1;
