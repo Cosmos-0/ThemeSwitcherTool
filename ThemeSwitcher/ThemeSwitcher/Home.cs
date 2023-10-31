@@ -9,6 +9,7 @@ namespace ThemeSwitcher
     public partial class Home : Form
     {
         int SystemRes;
+        RegistryKey key;
         public const int WM_HOTKEY = 0x0312;
         public const int HOTKEY_ID = 9000;  // Arbitrary unique ID to identify the hotkey
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -34,9 +35,10 @@ namespace ThemeSwitcher
 
         public Home()
         {
+            SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
             InitializeComponent();
+            themeSwitch.Checked = SystemRes.Equals(0);
             this.TopMost = true;
-
             try
             {
                 string appName = "ThemeSwitcher";
@@ -56,7 +58,7 @@ namespace ThemeSwitcher
                 MessageBox.Show(ex.Message);
             }
 
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
+            this.FormClosing += new FormClosingEventHandler(this.Home_FormClosing);
 
         }
         public static void ChangeThemeMode(bool darkMode)
@@ -64,7 +66,10 @@ namespace ThemeSwitcher
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true))
             {
                 if (key != null)
+                {
                     key.SetValue("AppsUseLightTheme", darkMode ? 0 : 1);
+                    key.SetValue("SystemUsesLightTheme", darkMode ? 0 : 1);
+                }
             }
 
             // Notify all windows about the theme change
@@ -74,9 +79,6 @@ namespace ThemeSwitcher
         private void Home_Load(object sender, EventArgs e)
         {
             InitializeContextMenu();
-            key = Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true);
-            SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
-            themeSwitch.Checked = SystemRes.Equals(0);
             RegisterHotKey(this.Handle, HOTKEY_ID, 0, (uint)Keys.F9);  // Register F9 as global hotkey
 
         }
@@ -102,8 +104,6 @@ namespace ThemeSwitcher
         }
         private void themeSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", SystemRes.Equals(0) ? 1 : 0);
-            Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", SystemRes.Equals(0) ? 1 : 0);
             ChangeThemeMode(SystemRes.Equals(0));
             SystemRes = SystemRes.Equals(0) ? 1 : 0;
         }
@@ -147,11 +147,6 @@ namespace ThemeSwitcher
         private void hideIcon_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void Home_Shown(object sender, EventArgs e)
-        {
-            Hide();
         }
 
     }

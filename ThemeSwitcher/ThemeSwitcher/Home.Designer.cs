@@ -109,7 +109,7 @@
             Text = "Theme switcher";
             TransparencyKey = System.Drawing.Color.Green;
             Load += Home_Load;
-            Shown += Home_Shown;
+            Shown += hideIcon_Click;
             Resize += Home_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)hideIcon).EndInit();
