@@ -45,7 +45,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Contact
 
-If you have any questions or suggestions, please feel free to [open an issue](https://github.com/ZeroCode-Dark//ThemeSwitcherTool/issues) or contact us via email at your. oussamadalaa1@gmail.com.
+If you have any questions or suggestions, please feel free to [open an issue](https://github.com/ZeroCode-Dark//ThemeSwitcherTool/issues) or contact us via email at. oussamadalaa1@gmail.com.
 
 ---
 
