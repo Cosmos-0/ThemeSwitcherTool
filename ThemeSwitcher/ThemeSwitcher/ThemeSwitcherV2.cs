@@ -36,17 +36,33 @@ namespace ThemeSwitcher
 
         [DllImport("user32.dll")]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        string LightDark, lightTime, darkTime;
+        bool AutomaticTheme;
         public ThemeSwitcherV2()
         {
             InitializeComponent();
+            this.TopMost = true;
             STATIC.MAIN_FRM = this;
             RegisterHotKey(this.Handle, HOTKEY_ID, 0, (uint)Keys.F9);
             this.FormClosing += (args, e) => { UnregisterHotKey(this.Handle, HOTKEY_ID); };
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = Region.FromHrgn(STATIC.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             this.hideBtn.Click += (args, e) => { this.Hide(); };
+            Registry.CurrentUser.CreateSubKey("Software\\ThemeSwitcher");
+            AutomaticTheme = (bool)Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "AutomaticTheme", false);
+            LightDark = (string)Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark", "0");
+            ExploreRegistryValues();
+            TimeSetting();
+            ConfigSwitchButtons();
             STATIC.InitializeContextMenu(notifyIcon, this, Properties.Resources.notify);
+            AutomaticTimePanel.Enabled = AutomaticCheck.Checked;
 
+            
+        }
+
+        private async Task ConfigSwitchButtons()
+        {
             Task.Run(() =>
             {
                 SwitchButton btnLight = new SwitchButton(Properties.Resources.Sun, "Light", "light");
@@ -67,21 +83,50 @@ namespace ThemeSwitcher
                     tablelayout.Controls.Add(btnLight);
                     tablelayout.Controls.Add(btnDark);
                 }));
+
                 UpdateFormColors();
             });
-            
-
-
-
-
-
         }
+        private async Task ExploreRegistryValues()
+        {
+            await Task.Run(() =>
+            {
+                lightTime = !LightDark.Equals("0") ? LightDark.Substring(0, LightDark.IndexOf("&") + 1) : lightTime = "07:00";
+                darkTime = !LightDark.Equals("0") ? LightDark.Substring(LightDark.IndexOf("&")) : darkTime = "18:00"; ;
+            });
+        }
+        private async Task TimeSetting()
+        {
+            await Task.Run(() =>
+            {
+                TimeLight.Invoke(new Action(() =>
+                {
+                    TimeLight.Format = DateTimePickerFormat.Custom;
+                    TimeLight.CustomFormat = "HH:mm";
+                    TimeLight.ShowUpDown = true;
+                    TimeLight.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt16(lightTime.Substring(0, 2)), Convert.ToInt16(lightTime.Substring(3)), 00);
+                }));
 
+                TimeDark.Invoke(new Action(() =>
+                {
+                    TimeDark.Format = DateTimePickerFormat.Custom;
+                    TimeDark.CustomFormat = "HH:mm";
+                    TimeDark.ShowUpDown = true;
+                    TimeDark.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt16(darkTime.Substring(0, 2)), Convert.ToInt16(darkTime.Substring(3)), 00);
+                }));
+            });
+        }
         public void UpdateFormColors()
         {
-            this.BackColor = STATIC.theme.Equals("dark") ? Color.FromArgb(41, 41, 41) : Color.White;
-            ThemeLabel.ForeColor = !STATIC.theme.Equals("dark") ? Color.FromArgb(41, 41, 41) : Color.White;
-            tablelayout.BackColor = STATIC.theme.Equals("dark") ? Color.FromArgb(30, 30, 30) : Color.Silver;
+            this.BackColor = STATIC.theme.Equals("dark") ? STATIC.DarkbackColor : STATIC.LightbackColor;
+            ThemeLabel.ForeColor = STATIC.theme.Equals("dark") ? STATIC.DarkforeColor : STATIC.LightforeColor2;
+            tablelayout.BackColor = STATIC.theme.Equals("dark") ? STATIC.DarkbackColor2 : Color.Silver;
+            titleApp.ForeColor = STATIC.theme.Equals("dark") ? STATIC.DarkforeColor : STATIC.LightforeColor2;
+            ShortcutF9.ForeColor = STATIC.theme.Equals("dark") ? STATIC.DarkforeColor : STATIC.LightforeColor2;
+            lbl_automaticTheme.ForeColor = STATIC.theme.Equals("dark") ? STATIC.DarkforeColor : STATIC.LightforeColor2;
+            lbl__lightFrom.ForeColor = STATIC.theme.Equals("dark") ? STATIC.DarkforeColor : STATIC.LightforeColor2;
+            lbl_DarkFrom.ForeColor = STATIC.theme.Equals("dark") ? STATIC.DarkforeColor : STATIC.LightforeColor2;
+
         }
 
         private void ThemeSwitcherV2_MouseDown(object sender, MouseEventArgs e)
@@ -100,6 +145,17 @@ namespace ThemeSwitcher
             {
                 STATIC.theme = STATIC.theme.Equals("dark") ? "light" : "dark";
             }
+        }
+
+        private void AutomaticCheck_CheckedChanged()
+        {
+            AutomaticTimePanel.Enabled = AutomaticCheck.Checked;
+        }
+
+        private void TimeLight_ValueChanged(object sender, EventArgs e)
+        {
+            Registry.SetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark",
+                $"{TimeLight.Value.Hour}:{TimeLight.Value.Minute} & {TimeDark.Value.Hour}:{TimeDark.Value.Minute}");
         }
     }
 }

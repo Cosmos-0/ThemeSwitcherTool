@@ -121,6 +121,18 @@
   <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DarkHour" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="DarkMinute" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="LightHour" xml:space="preserve">
+    <value>07</value>
+  </data>
+  <data name="LightMinute" xml:space="preserve">
+    <value>00</value>
+  </data>
   <data name="Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Moon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

@@ -26,6 +26,7 @@ namespace ThemeSwitcher.CONTROL
 
         }
 
+        
         private void switchBtnClick(object sender, EventArgs e)
         {
             STATIC.theme = accessibleName;
@@ -43,8 +44,8 @@ namespace ThemeSwitcher.CONTROL
 
         void RefreshComponent(SwitchButton btn)
         {
-            btn.BackColor = Color.Silver;
-            btn.txt.ForeColor = Color.Black;
+            btn.BackColor = Color.Transparent;
+            btn.txt.ForeColor = STATIC.theme.Equals("dark") ?STATIC.DarkforeColor: STATIC.LightforeColor;
             if (btn.accessibleName.Equals(STATIC.theme))
             {
                 btn.BackColor = Color.White;
@@ -52,7 +53,7 @@ namespace ThemeSwitcher.CONTROL
             }
         }
 
-         void RefreshState()
+        public void RefreshState()
         {
             foreach (SwitchButton item in STATIC.switchBtns)
                 RefreshComponent(item);

@@ -14,8 +14,12 @@ namespace ThemeSwitcher.STATICS
 {
     sealed public class STATIC
     {
-        //public static Color LightforeColor = Color.FromArgb();
-        //public static Color BlackbackColor;
+        public static Color LightforeColor = Color.FromArgb(41, 41, 41);
+        public static Color LightforeColor2 = Color.Gray;
+        public static Color DarkforeColor = Color.White;
+        public static Color LightbackColor = Color.White;
+        public static Color DarkbackColor = Color.FromArgb(41, 41, 41);
+        public static Color DarkbackColor2 = Color.FromArgb(79, 79, 79);
 
         public static ThemeSwitcherV2 MAIN_FRM;
 
@@ -49,7 +53,6 @@ namespace ThemeSwitcher.STATICS
                 {
                     Theme = value;
                     ThemeChangeTrigger();
-
                 }
             }
         }
@@ -58,6 +61,7 @@ namespace ThemeSwitcher.STATICS
         {
             ChangeThemeMode(theme.Equals("dark"));
             MAIN_FRM.UpdateFormColors();
+            switchBtns[0].RefreshState();
         }
 
         public static List<SwitchButton> switchBtns = new List<SwitchButton>();

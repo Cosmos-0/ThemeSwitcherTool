@@ -71,6 +71,42 @@ namespace ThemeSwitcher.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à 18.
+        /// </summary>
+        public static string DarkHour {
+            get {
+                return ResourceManager.GetString("DarkHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 00.
+        /// </summary>
+        public static string DarkMinute {
+            get {
+                return ResourceManager.GetString("DarkMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 07.
+        /// </summary>
+        public static string LightHour {
+            get {
+                return ResourceManager.GetString("LightHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 00.
+        /// </summary>
+        public static string LightMinute {
+            get {
+                return ResourceManager.GetString("LightMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Moon {

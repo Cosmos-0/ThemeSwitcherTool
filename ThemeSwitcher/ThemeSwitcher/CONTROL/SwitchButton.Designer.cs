@@ -85,7 +85,7 @@ namespace ThemeSwitcher.CONTROL
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = Color.Silver;
+            BackColor = Color.Transparent;
             Controls.Add(tableLayoutPanel1);
             Cursor = System.Windows.Forms.Cursors.Hand;
             Margin = new System.Windows.Forms.Padding(0);
