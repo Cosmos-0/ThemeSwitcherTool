@@ -37,7 +37,8 @@ namespace ThemeSwitcher.CONTROL
         private void MainParentThemeRefresh()
         {
             ThemeSwitcherV2 parent = (ThemeSwitcherV2)this.Parent.Parent;
-            MessageBox.Show(parent.Name);
+            parent.UpdateFormColors();
+
         }
 
         void RefreshComponent(SwitchButton btn)

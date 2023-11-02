@@ -18,7 +18,7 @@ namespace ThemeSwitcher
         public ThemeSwitcherV2()
         {
             InitializeComponent();
-            this.Region = Region.FromHrgn(STATIC.CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
+            this.Region = Region.FromHrgn(STATIC.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             STATIC.InitializeContextMenu(notifyIcon, this, Properties.Resources.notify);
 
             SwitchButton btnLight = new SwitchButton(Properties.Resources.Sun, "Light", "light");
@@ -36,7 +36,15 @@ namespace ThemeSwitcher
             tablelayout.Controls.Add(btnLight);
             tablelayout.Controls.Add(btnDark);
 
+            UpdateFormColors();
 
+        }
+
+        public void UpdateFormColors()
+        {
+            this.BackColor = STATIC.theme.Equals("dark") ? Color.FromArgb(41, 41, 41) : Color.White;
+            ThemeLabel.ForeColor = !STATIC.theme.Equals("dark") ? Color.FromArgb(41, 41, 41) : Color.White;
+            tablelayout.BackColor = STATIC.theme.Equals("dark") ? Color.FromArgb(30, 30, 30) : Color.Silver;
         }
 
     }

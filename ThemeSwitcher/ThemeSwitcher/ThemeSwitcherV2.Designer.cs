@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             notifyIcon = new System.Windows.Forms.NotifyIcon(components);
             tablelayout = new System.Windows.Forms.TableLayoutPanel();
-            label1 = new System.Windows.Forms.Label();
+            ThemeLabel = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // notifyIcon
@@ -45,7 +45,7 @@
             tablelayout.ColumnCount = 2;
             tablelayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tablelayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tablelayout.Location = new System.Drawing.Point(20, 59);
+            tablelayout.Location = new System.Drawing.Point(120, 81);
             tablelayout.Name = "tablelayout";
             tablelayout.Padding = new System.Windows.Forms.Padding(5);
             tablelayout.RowCount = 1;
@@ -53,23 +53,24 @@
             tablelayout.Size = new System.Drawing.Size(226, 54);
             tablelayout.TabIndex = 3;
             // 
-            // label1
+            // ThemeLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.ForeColor = System.Drawing.Color.Gray;
-            label1.Location = new System.Drawing.Point(20, 27);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(76, 28);
-            label1.TabIndex = 4;
-            label1.Text = "Theme";
+            ThemeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            ThemeLabel.AutoSize = true;
+            ThemeLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            ThemeLabel.ForeColor = System.Drawing.Color.Gray;
+            ThemeLabel.Location = new System.Drawing.Point(194, 50);
+            ThemeLabel.Name = "ThemeLabel";
+            ThemeLabel.Size = new System.Drawing.Size(76, 28);
+            ThemeLabel.TabIndex = 4;
+            ThemeLabel.Text = "Theme";
             // 
             // ThemeSwitcherV2
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(267, 385);
-            Controls.Add(label1);
+            ClientSize = new System.Drawing.Size(482, 434);
+            Controls.Add(ThemeLabel);
             Controls.Add(tablelayout);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Name = "ThemeSwitcherV2";
@@ -82,7 +83,7 @@
 
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.TableLayoutPanel tablelayout;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ThemeLabel;
 
         #endregion
 
