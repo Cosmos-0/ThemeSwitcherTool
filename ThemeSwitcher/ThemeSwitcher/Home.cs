@@ -15,9 +15,9 @@ namespace ThemeSwitcher
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
 
-        
 
-        
+
+
 
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -58,7 +58,7 @@ namespace ThemeSwitcher
             this.FormClosing += new FormClosingEventHandler(this.Home_FormClosing);
 
         }
-        
+
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -81,7 +81,6 @@ namespace ThemeSwitcher
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
-
             if (m.Msg == WM_HOTKEY && (int)m.WParam == HOTKEY_ID)
             {
                 ToggleTheme();
