@@ -28,7 +28,6 @@ namespace ThemeSwitcher.CONTROL
 
         private void switchBtnClick(object sender, EventArgs e)
         {
-            //MessageBox.Show(accessibleName);
             STATIC.theme = accessibleName;
             RefreshState();
         }

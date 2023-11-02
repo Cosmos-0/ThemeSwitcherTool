@@ -15,11 +15,9 @@ namespace ThemeSwitcher
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
 
-        const int WM_SETTINGCHANGE = 0x001A;
-        const int HWND_BROADCAST = 0xFFFF;
+        
 
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int Msg, IntPtr wParam, string lParam, uint fuFlags, uint uTimeout, IntPtr lpdwResult);
+        
 
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -35,9 +33,8 @@ namespace ThemeSwitcher
 
         public Home()
         {
-            STATIC.SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
             InitializeComponent();
-            themeSwitch.Checked = STATIC.SystemRes.Equals(0);
+            themeSwitch.Checked = STATIC.theme.Equals("dark");
             this.TopMost = true;
             try
             {
@@ -61,24 +58,12 @@ namespace ThemeSwitcher
             this.FormClosing += new FormClosingEventHandler(this.Home_FormClosing);
 
         }
-        public static void ChangeThemeMode(bool darkMode)
-        {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true))
-            {
-                if (key != null)
-                {
-                    key.SetValue("AppsUseLightTheme", darkMode ? 0 : 1);
-                    key.SetValue("SystemUsesLightTheme", darkMode ? 0 : 1);
-                }
-            }
-
-            // Notify all windows about the theme change
-            SendMessageTimeout((IntPtr)HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, "ImmersiveColorSet", 0, 1000, IntPtr.Zero);
-        }
+        
 
         private void Home_Load(object sender, EventArgs e)
         {
-            InitializeContextMenu();
+            //STATIC.InitializeContextMenu(notifyIcon,this);
+
             RegisterHotKey(this.Handle, HOTKEY_ID, 0, (uint)Keys.F9);  // Register F9 as global hotkey
 
         }
@@ -104,8 +89,8 @@ namespace ThemeSwitcher
         }
         private void themeSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeThemeMode(STATIC.SystemRes.Equals(0));
-            STATIC.SystemRes = STATIC.SystemRes.Equals(0) ? 1 : 0;
+            STATIC.ChangeThemeMode(STATIC.theme.Equals("dark"));
+            STATIC.theme = STATIC.theme.Equals("dark") ? "light" : "dark";
         }
 
         private void Home_Resize(object sender, EventArgs e)
@@ -123,17 +108,6 @@ namespace ThemeSwitcher
             notifyIcon.Visible = true; // Hide the system tray icon
         }
 
-        private void InitializeContextMenu()
-        {
-            ContextMenuStrip contextMenu = new ContextMenuStrip();
-            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Exit");
-            ToolStripMenuItem MinimizeMenuItem = new ToolStripMenuItem("Minimize");
-            exitMenuItem.Click += (sender, e) => { Application.Exit(); };
-            MinimizeMenuItem.Click += (sender, e) => { this.Hide(); };
-            contextMenu.Items.Add(exitMenuItem);
-            contextMenu.Items.Add(MinimizeMenuItem);
-            notifyIcon.ContextMenuStrip = contextMenu;
-        }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {

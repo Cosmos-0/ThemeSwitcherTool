@@ -121,6 +121,9 @@
   <data name="Moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Moon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="notify" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notify.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Sun" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sun.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

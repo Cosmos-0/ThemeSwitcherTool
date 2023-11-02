@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tablelayout = new System.Windows.Forms.TableLayoutPanel();
+            notifyIcon = new System.Windows.Forms.NotifyIcon(components);
             SuspendLayout();
             // 
             // tablelayout
@@ -45,6 +47,11 @@
             tablelayout.Size = new System.Drawing.Size(226, 54);
             tablelayout.TabIndex = 1;
             // 
+            // notifyIcon
+            // 
+            notifyIcon.Text = "notifyIcon";
+            notifyIcon.Visible = true;
+            // 
             // ThemeSwitcherV2
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -60,6 +67,7 @@
         }
 
         private System.Windows.Forms.TableLayoutPanel tablelayout;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
 
         #endregion
 
