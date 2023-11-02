@@ -30,6 +30,14 @@ namespace ThemeSwitcher.CONTROL
         {
             STATIC.theme = accessibleName;
             RefreshState();
+            MainParentThemeRefresh();
+        }
+
+
+        private void MainParentThemeRefresh()
+        {
+            ThemeSwitcherV2 parent = (ThemeSwitcherV2)this.Parent.Parent;
+            MessageBox.Show(parent.Name);
         }
 
         void RefreshComponent(SwitchButton btn)

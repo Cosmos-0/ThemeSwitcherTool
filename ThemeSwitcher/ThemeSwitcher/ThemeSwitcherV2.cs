@@ -18,7 +18,8 @@ namespace ThemeSwitcher
         public ThemeSwitcherV2()
         {
             InitializeComponent();
-            STATIC.InitializeContextMenu(notifyIcon, this,Properties.Resources.notify);
+            this.Region = Region.FromHrgn(STATIC.CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
+            STATIC.InitializeContextMenu(notifyIcon, this, Properties.Resources.notify);
 
             SwitchButton btnLight = new SwitchButton(Properties.Resources.Sun, "Light", "light");
             SwitchButton btnDark = new SwitchButton(Properties.Resources.Moon, "Dark", "dark");
@@ -31,7 +32,7 @@ namespace ThemeSwitcher
             btnDark.Width = Convert.ToInt16(tablelayout.Width * 0.50);
             btnLight.Height = tablelayout.Height;
             btnDark.Height = tablelayout.Height;
-            
+
             tablelayout.Controls.Add(btnLight);
             tablelayout.Controls.Add(btnDark);
 
