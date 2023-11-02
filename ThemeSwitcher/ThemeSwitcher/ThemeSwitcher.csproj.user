@@ -4,7 +4,13 @@
     <_LastSelectedProfileId>C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="CONTROL\SwitchButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ThemeSwitcherV2.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

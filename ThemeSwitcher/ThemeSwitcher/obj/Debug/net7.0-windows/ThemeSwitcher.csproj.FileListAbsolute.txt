@@ -36,3 +36,5 @@ C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSw
 C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.pdb
 C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.genruntimeconfig.cache
 C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ref\ThemeSwitcher.dll
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.CONTROL.SwitchButton.resources
+C:\Users\ThinkPad\Desktop\theme Switcher\ThemeSwitcherTool\ThemeSwitcher\ThemeSwitcher\obj\Debug\net7.0-windows\ThemeSwitcher.ThemeSwitcherV2.resources

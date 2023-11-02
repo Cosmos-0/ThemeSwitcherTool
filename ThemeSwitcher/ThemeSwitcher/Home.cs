@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
+using ThemeSwitcher.STATICS;
 using Microsoft.Win32;
 
 namespace ThemeSwitcher
 {
     public partial class Home : Form
     {
-        int SystemRes;
-        RegistryKey key;
+
+        //RegistryKey key;
         public const int WM_HOTKEY = 0x0312;
         public const int HOTKEY_ID = 9000;  // Arbitrary unique ID to identify the hotkey
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -35,9 +35,9 @@ namespace ThemeSwitcher
 
         public Home()
         {
-            SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
+            STATIC.SystemRes = (int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", -1);
             InitializeComponent();
-            themeSwitch.Checked = SystemRes.Equals(0);
+            themeSwitch.Checked = STATIC.SystemRes.Equals(0);
             this.TopMost = true;
             try
             {
@@ -104,8 +104,8 @@ namespace ThemeSwitcher
         }
         private void themeSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeThemeMode(SystemRes.Equals(0));
-            SystemRes = SystemRes.Equals(0) ? 1 : 0;
+            ChangeThemeMode(STATIC.SystemRes.Equals(0));
+            STATIC.SystemRes = STATIC.SystemRes.Equals(0) ? 1 : 0;
         }
 
         private void Home_Resize(object sender, EventArgs e)
