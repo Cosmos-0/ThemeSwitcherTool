@@ -209,6 +209,8 @@
             TimeDark.Name = "TimeDark";
             TimeDark.Size = new System.Drawing.Size(89, 27);
             TimeDark.TabIndex = 25;
+            TimeDark.Value = new System.DateTime(2023, 11, 3, 2, 22, 43, 0);
+            TimeDark.ValueChanged += TimeLight_ValueChanged;
             // 
             // TimeLight
             // 
@@ -219,6 +221,7 @@
             TimeLight.Name = "TimeLight";
             TimeLight.Size = new System.Drawing.Size(92, 27);
             TimeLight.TabIndex = 24;
+            TimeLight.Value = new System.DateTime(2023, 11, 3, 2, 22, 49, 0);
             TimeLight.ValueChanged += TimeLight_ValueChanged;
             // 
             // ThemeSwitcherV2

@@ -38,27 +38,76 @@ namespace ThemeSwitcher
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         string LightDark, lightTime, darkTime;
-        bool AutomaticTheme;
+        System.Windows.Forms.Timer AutomaticThemeTimer = new System.Windows.Forms.Timer();
+
+
+        public bool AutomaticTheme;
         public ThemeSwitcherV2()
         {
             InitializeComponent();
             this.TopMost = true;
             STATIC.MAIN_FRM = this;
             RegisterHotKey(this.Handle, HOTKEY_ID, 0, (uint)Keys.F9);
+
             this.FormClosing += (args, e) => { UnregisterHotKey(this.Handle, HOTKEY_ID); };
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = Region.FromHrgn(STATIC.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             this.hideBtn.Click += (args, e) => { this.Hide(); };
+
             Registry.CurrentUser.CreateSubKey("Software\\ThemeSwitcher");
-            AutomaticTheme = (bool)Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "AutomaticTheme", false);
             LightDark = (string)Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark", "0");
+
+            ConfigTimer();
             ExploreRegistryValues();
             TimeSetting();
             ConfigSwitchButtons();
             STATIC.InitializeContextMenu(notifyIcon, this, Properties.Resources.notify);
-            AutomaticTimePanel.Enabled = AutomaticCheck.Checked;
 
-            
+            AutomaticTimePanel.Enabled = AutomaticCheck.Checked;
+            AutomaticTheme = Convert.ToBoolean(Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "AutomaticTheme", false).ToString().ToLower());
+            AutomaticCheck.Checked = AutomaticTheme;
+            TriggerTimer();
+
+        }
+
+        void TriggerTimer()
+        {
+            if (AutomaticTheme)
+                AutomaticThemeTimer.Start();
+            else AutomaticThemeTimer.Stop();
+        }
+
+        async Task ConfigTimer()
+        {
+            await Task.Run(() =>
+            {
+                AutomaticThemeTimer.Interval = 5000;
+                AutomaticThemeTimer.Tick += (args, e) =>
+                {
+                    /*STATIC.theme = DateTime.Now >= DateTime.Today
+                    .AddHours(
+                        Convert.ToInt16(lightTime.Substring(0, lightTime.IndexOf(":"))))
+                    .AddMinutes(
+                        Convert.ToInt16(lightTime.Substring(lightTime.IndexOf(":") + 1)))
+                    &&
+                    DateTime.Now < DateTime
+                    .Today
+                    .AddHours(
+                        Convert.ToInt16(lightTime.Substring(0, darkTime.IndexOf(":"))))
+                    .AddMinutes(
+                        Convert.ToInt16(darkTime.Substring(darkTime.IndexOf(":") + 1)))
+                    ? "light" : "dark";*/
+                    ExploreRegistryValues();
+                    DateTime currentTime = DateTime.Now;
+                    DateTime timeLight = DateTime.ParseExact(lightTime.Trim(), "HH:mm", null);
+                    DateTime timeDark = DateTime.ParseExact(darkTime.Trim(), "HH:mm", null);
+                    //MessageBox.Show($"current Time :{currentTime}\ntimeLight:{timeLight}\ntimeDark:{timeDark}");
+                    MessageBox.Show($"current Time :{currentTime}\ntimeLight:{timeLight}\ntimeDark:{timeDark}\nresult:{currentTime >= timeLight && currentTime <= timeDark}");
+                    STATIC.theme = currentTime >= timeLight && currentTime <= timeDark ? "light" : "dark";
+
+
+                };
+            });
         }
 
         private async Task ConfigSwitchButtons()
@@ -87,33 +136,31 @@ namespace ThemeSwitcher
                 UpdateFormColors();
             });
         }
-        private async Task ExploreRegistryValues()
+        private void ExploreRegistryValues()
         {
-            await Task.Run(() =>
-            {
-                lightTime = !LightDark.Equals("0") ? LightDark.Substring(0, LightDark.IndexOf("&") + 1) : lightTime = "07:00";
-                darkTime = !LightDark.Equals("0") ? LightDark.Substring(LightDark.IndexOf("&")) : darkTime = "18:00"; ;
-            });
+            lightTime = !LightDark.Equals("0") ? LightDark.Substring(0, LightDark.IndexOf("&")) : lightTime = "07:00";
+            darkTime = !LightDark.Equals("0") ? LightDark.Substring(LightDark.IndexOf("&") + 1) : darkTime = "18:00"; ;
+
         }
         private async Task TimeSetting()
         {
             await Task.Run(() =>
             {
-                TimeLight.Invoke(new Action(() =>
-                {
-                    TimeLight.Format = DateTimePickerFormat.Custom;
-                    TimeLight.CustomFormat = "HH:mm";
-                    TimeLight.ShowUpDown = true;
-                    TimeLight.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt16(lightTime.Substring(0, 2)), Convert.ToInt16(lightTime.Substring(3)), 00);
-                }));
-
                 TimeDark.Invoke(new Action(() =>
                 {
                     TimeDark.Format = DateTimePickerFormat.Custom;
                     TimeDark.CustomFormat = "HH:mm";
                     TimeDark.ShowUpDown = true;
-                    TimeDark.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt16(darkTime.Substring(0, 2)), Convert.ToInt16(darkTime.Substring(3)), 00);
+                    TimeDark.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt16(darkTime.Substring(0, darkTime.IndexOf(":"))), Convert.ToInt16(darkTime.Substring(darkTime.IndexOf(":") + 1)), 00);
                 }));
+                TimeLight.Invoke(new Action(() =>
+                {
+                    TimeLight.Format = DateTimePickerFormat.Custom;
+                    TimeLight.CustomFormat = "HH:mm";
+                    TimeLight.ShowUpDown = true;
+                    TimeLight.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt16(lightTime.Substring(0, lightTime.IndexOf(":"))), Convert.ToInt16(lightTime.Substring(lightTime.IndexOf(":") + 1)), 00);
+                }));
+
             });
         }
         public void UpdateFormColors()
@@ -149,13 +196,24 @@ namespace ThemeSwitcher
 
         private void AutomaticCheck_CheckedChanged()
         {
+            Registry.SetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "AutomaticTheme", AutomaticCheck.Checked);
+            AutomaticTheme = AutomaticCheck.Checked;
             AutomaticTimePanel.Enabled = AutomaticCheck.Checked;
+            TriggerTimer();
         }
 
         private void TimeLight_ValueChanged(object sender, EventArgs e)
         {
-            Registry.SetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark",
-                $"{TimeLight.Value.Hour}:{TimeLight.Value.Minute} & {TimeDark.Value.Hour}:{TimeDark.Value.Minute}");
+            MessageBox.Show($"{TimeLight.Value.ToString("HH:mm")} & {TimeDark.Value.ToString("HH:mm")}");
+            if (TimeDark.Value >= TimeLight.Value)
+                Registry.SetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark",
+                    $"{TimeLight.Value.ToString("HH:mm")} & {TimeDark.Value.ToString("HH:mm")}");
+            else MessageBox.Show("Time For Dark Mode Must Be Greater Than Time For Light Mode");
+
+
+
         }
+
+
     }
 }
