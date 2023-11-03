@@ -55,7 +55,7 @@ namespace ThemeSwitcher
             this.hideBtn.Click += (args, e) => { this.Hide(); };
 
             Registry.CurrentUser.CreateSubKey("Software\\ThemeSwitcher");
-            LightDark = (string)Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark", "0");
+            
 
             ConfigTimer();
             ExploreRegistryValues();
@@ -81,28 +81,13 @@ namespace ThemeSwitcher
         {
             await Task.Run(() =>
             {
-                AutomaticThemeTimer.Interval = 5000;
+                AutomaticThemeTimer.Interval = 1000;
                 AutomaticThemeTimer.Tick += (args, e) =>
                 {
-                    /*STATIC.theme = DateTime.Now >= DateTime.Today
-                    .AddHours(
-                        Convert.ToInt16(lightTime.Substring(0, lightTime.IndexOf(":"))))
-                    .AddMinutes(
-                        Convert.ToInt16(lightTime.Substring(lightTime.IndexOf(":") + 1)))
-                    &&
-                    DateTime.Now < DateTime
-                    .Today
-                    .AddHours(
-                        Convert.ToInt16(lightTime.Substring(0, darkTime.IndexOf(":"))))
-                    .AddMinutes(
-                        Convert.ToInt16(darkTime.Substring(darkTime.IndexOf(":") + 1)))
-                    ? "light" : "dark";*/
                     ExploreRegistryValues();
                     DateTime currentTime = DateTime.Now;
                     DateTime timeLight = DateTime.ParseExact(lightTime.Trim(), "HH:mm", null);
                     DateTime timeDark = DateTime.ParseExact(darkTime.Trim(), "HH:mm", null);
-                    //MessageBox.Show($"current Time :{currentTime}\ntimeLight:{timeLight}\ntimeDark:{timeDark}");
-                    MessageBox.Show($"current Time :{currentTime}\ntimeLight:{timeLight}\ntimeDark:{timeDark}\nresult:{currentTime >= timeLight && currentTime <= timeDark}");
                     STATIC.theme = currentTime >= timeLight && currentTime <= timeDark ? "light" : "dark";
 
 
@@ -112,7 +97,7 @@ namespace ThemeSwitcher
 
         private async Task ConfigSwitchButtons()
         {
-            Task.Run(() =>
+            await Task.Run(() =>
             {
                 SwitchButton btnLight = new SwitchButton(Properties.Resources.Sun, "Light", "light");
                 SwitchButton btnDark = new SwitchButton(Properties.Resources.Moon, "Dark", "dark");
@@ -138,9 +123,10 @@ namespace ThemeSwitcher
         }
         private void ExploreRegistryValues()
         {
+
+            LightDark = (string)Registry.GetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark", "0"); // Refresh LightDark Value from Registry
             lightTime = !LightDark.Equals("0") ? LightDark.Substring(0, LightDark.IndexOf("&")) : lightTime = "07:00";
             darkTime = !LightDark.Equals("0") ? LightDark.Substring(LightDark.IndexOf("&") + 1) : darkTime = "18:00"; ;
-
         }
         private async Task TimeSetting()
         {
@@ -204,13 +190,12 @@ namespace ThemeSwitcher
 
         private void TimeLight_ValueChanged(object sender, EventArgs e)
         {
-            MessageBox.Show($"{TimeLight.Value.ToString("HH:mm")} & {TimeDark.Value.ToString("HH:mm")}");
-            if (TimeDark.Value >= TimeLight.Value)
+            
+            if (TimeDark.Value >= TimeLight.Value) { 
                 Registry.SetValue("HKEY_CURRENT_USER\\Software\\ThemeSwitcher", "LightDark",
                     $"{TimeLight.Value.ToString("HH:mm")} & {TimeDark.Value.ToString("HH:mm")}");
+            }
             else MessageBox.Show("Time For Dark Mode Must Be Greater Than Time For Light Mode");
-
-
 
         }
 
