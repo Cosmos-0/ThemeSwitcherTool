@@ -2,6 +2,8 @@
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
+![ThemeSwitcher V2](https://lh3.google.com/u/0/d/1mum6zB7-AgsmB49Uk4iyWpV-xWPsLYfS=w1920-h912-iv1)
+
 ## Overview
 
 The Windows Dark & Light Mode Switcher is a simple tool that allows users to easily switch between dark mode and light mode on windows10 and later operating system. This tool provides a convenient way to toggle between these display modes without the need to navigate through the Windows settings.
